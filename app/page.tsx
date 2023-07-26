@@ -1,5 +1,5 @@
 import { ProjectInterface } from "@/common.types"
-import { deleteProject, fetchAllProjects } from "@/lib/actions"
+import { fetchAllProjects } from "@/lib/actions"
 import ProjectCard from "@/components/ProjectCard"
 import Categories from "@/components/Categories"
 import LoadMore from "@/components/LoadMore"
