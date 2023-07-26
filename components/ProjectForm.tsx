@@ -24,7 +24,7 @@ const ProjectForm = ({ type, session }: Props) => {
         image: '',
         liveSiteUrl: '',
         githubUrl: '',
-        category: '',
+        category: 'frontend',
     })
 
     const handleFormSubmit = async (e: React.FormEvent) => {
