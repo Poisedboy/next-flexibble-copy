@@ -4,13 +4,13 @@ import ProjectCard from "@/components/ProjectCard"
 import Categories from "@/components/Categories"
 import LoadMore from "@/components/LoadMore"
 
-// type SearchParams = {
-//     category?: string | null,
-//     endcursor?: string | null,
-// }
-// type Props = {
-//     searchParams: SearchParams
-// }
+type SearchParams = {
+    category?: string | null,
+    endcursor?: string | null,
+}
+type Props = {
+    searchParams: SearchParams
+}
 
 // type ProjectSearch = {
 //     projectSearch: {
