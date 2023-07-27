@@ -1,7 +1,6 @@
 import Navbar from '@/components/Navbar'
 import './globals.css'
 import Footer from '@/components/Footer'
-import { SessionProvider } from 'next-auth/react'
 
 export const metadata = {
   title: 'Flexibble',
