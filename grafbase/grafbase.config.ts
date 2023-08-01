@@ -1,4 +1,4 @@
-import { g, auth, config } from '@grafbase/sdk'
+import { g, config, auth } from '@grafbase/sdk';
 
 // @ts-ignore
 const User = g.model('User', {
@@ -8,6 +8,7 @@ const User = g.model('User', {
   description: g.string().length({ min: 2, max: 1000 }).optional(),
   githubUrl: g.url().optional(),
   linkedinUrl: g.url().optional(),
+  // @ts-ignore
   projects: g.relation(() => Project).list().optional(),
 }).auth((rules) => {
   rules.public().read()
@@ -21,6 +22,7 @@ const Project = g.model('Project', {
   liveSiteUrl: g.url(),
   githubUrl: g.url(),
   category: g.string().search(),
+  // @ts-ignore
   createdBy: g.relation(() => User),
 }).auth((rules) => {
   rules.public().read()
