@@ -12,39 +12,37 @@ type Props = {
     searchParams: SearchParams
 }
 
-// type ProjectSearch = {
-//     projectSearch: {
-//         edges: { node: ProjectInterface }[],
-//         pageInfo: {
-//             hasPreviousPage: boolean,
-//             hasNextPage: boolean,
-//             startCursor: string,
-//             endCursor: string,
-//         },
-//     },
-// }
+type ProjectSearch = {
+    projectSearch: {
+        edges: { node: ProjectInterface }[],
+        pageInfo: {
+            hasPreviousPage: boolean,
+            hasNextPage: boolean,
+            startCursor: string,
+            endCursor: string,
+        },
+    },
+}
 
 export const dynamic = 'force-dynamic'
 export const dynamicParams = true
 export const revalidate = 0
 
 const Home = async ({ searchParams: { category, endcursor } }: Props) => {
-    // const data = await fetchAllProjects(category || 'Frontend', endcursor) as ProjectSearch
+    const data = await fetchAllProjects(category || 'Frontend', endcursor) as ProjectSearch
 
-    const projectsToDisplay = [] as any;
+    const projectsToDisplay = data?.projectSearch?.edges || [] as any;
 
-    // data?.projectSearch?.edges ||
+    if (projectsToDisplay.length === 0) {
+        return (
+            <section className="flexStart flex-col paddings">
+                <Categories />
+                <p className="no-result-text text-center">No projects found, go create some first.</p>
+            </section>
+        )
+    }
 
-    // if (projectsToDisplay.length === 0) {
-    //     return (
-    //         <section className="flexStart flex-col paddings">
-    //             <Categories />
-    //             <p className="no-result-text text-center">No projects found, go create some first.</p>
-    //         </section>
-    //     )
-    // }
-
-    // const pagination = data?.projectSearch?.pageInfo
+    const pagination = data?.projectSearch?.pageInfo
 
     return (
         <section className="flex-start flex-col paddings mb-16">
