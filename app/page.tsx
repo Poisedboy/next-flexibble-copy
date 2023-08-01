@@ -42,7 +42,7 @@ const Home = async ({ searchParams: { category, endcursor } }: Props) => {
         )
     }
 
-    const pagination = data?.projectSearch?.pageInfo
+    // const pagination = data?.projectSearch?.pageInfo
 
     return (
         <section className="flex-start flex-col paddings mb-16">
@@ -62,12 +62,12 @@ const Home = async ({ searchParams: { category, endcursor } }: Props) => {
                 ))}
             </section>
 
-            <LoadMore
+            {/* <LoadMore
                 startCursor={pagination.startCursor}
                 endCursor={pagination.endCursor}
                 hasPreviousPage={pagination.hasPreviousPage}
                 hasNextPage={pagination.hasNextPage}
-            />
+            /> */}
         </section>
     )
 }
