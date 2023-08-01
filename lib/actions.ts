@@ -72,9 +72,14 @@ export const createNewProject = async (form: ProjectForm, creatorId: string, tok
     }
 }
 
-export const fetchAllProjects = (category?: string | null, endCursor?: string | null) => {
+export const fetchAllProjects = (category: string | null = 'Frontend', endCursor?: string | null) => {
     client.setHeader("x-api-key", apiKey)
-    return makeGraphQLRequest(projectsQuery, { category, endCursor })
+    console.log('Category in fetchALLprojects fn: ', category)
+    const variables = {
+        category,
+        endCursor
+    }
+    return makeGraphQLRequest(projectsQuery, variables)
 };
 
 export const deleteProject = (id: string, token: string) => {

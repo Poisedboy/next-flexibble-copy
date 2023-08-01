@@ -29,8 +29,8 @@ export const dynamicParams = true
 export const revalidate = 0
 
 const Home = async ({ searchParams: { category, endcursor } }: Props) => {
-    const data = await fetchAllProjects(category, endcursor) as ProjectSearch
-
+    const data = await fetchAllProjects(category || 'Frontend', endcursor) as ProjectSearch
+    console.log('CATEGORY: ', category, endcursor)
     const projectsToDisplay = data?.projectSearch?.edges || [] as any;
 
     if (projectsToDisplay.length === 0) {
@@ -62,12 +62,12 @@ const Home = async ({ searchParams: { category, endcursor } }: Props) => {
                 ))}
             </section>
 
-            {/* <LoadMore
+            <LoadMore
                 startCursor={pagination.startCursor}
                 endCursor={pagination.endCursor}
                 hasPreviousPage={pagination.hasPreviousPage}
                 hasNextPage={pagination.hasNextPage}
-            /> */}
+            />
         </section>
     )
 }
